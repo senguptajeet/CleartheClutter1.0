@@ -1,0 +1,40 @@
+# Python environment and compiled files
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+
+# Virtual Environments
+venv/
+.venv/
+env/
+.env
+
+# PyInstaller build artifacts
+build/
+dist/
+*.manifest
+
+# Inno Setup output
+Output/
+*.iss.bak
+
+# Clear The Clutter auto-generated runtime files
+logs/
+data/
+config/settings.json
+
+# OS generated files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# IDEs and Editors
+.vscode/
+.idea/
+*.swp
+*.swo

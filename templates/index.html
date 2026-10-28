@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Clear The Clutter</title>
+    <link rel="stylesheet" href="/static/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Ambient Background -->
+    <div class="ambient-orb orb-1"></div>
+    <div class="ambient-orb orb-2"></div>
+    
+    <div class="app-container">
+        <header class="glass-panel text-center">
+            <h1 class="glow-text">Clear The Clutter</h1>
+            <p class="subtitle">Organize Your Files. Simplify Your Digital Life.</p>
+        </header>
+
+        <section class="path-selection glass-panel">
+            <div class="input-group">
+                <label>Source Folder</label>
+                <div class="flex-row">
+                    <input type="text" id="src-path" placeholder="Select directory to scan..." readonly>
+                    <button class="btn-glass" onclick="browseFolder('src-path')">Browse</button>
+                </div>
+            </div>
+            <div class="input-group">
+                <label>Destination Folder</label>
+                <div class="flex-row">
+                    <input type="text" id="dest-path" placeholder="Where should folders be created?" readonly>
+                    <button class="btn-glass" onclick="browseFolder('dest-path')">Browse</button>
+                </div>
+            </div>
+        </section>
+
+        <div class="controls glass-panel flex-row centered">
+            <button class="btn-primary" id="btn-scan" onclick="startScan()">Scan Files</button>
+            <button class="btn-primary" id="btn-org" onclick="startOrganize()" disabled>Organize Files</button>
+            <button class="btn-danger" id="btn-cancel" onclick="cancelOp()" disabled>Cancel</button>
+            <button class="btn-secondary" id="btn-undo" onclick="undoLast()">Undo Last</button>
+        </div>
+
+        <div class="progress-container glass-panel hidden" id="progress-panel">
+            <div class="status-text" id="status-label">Idle</div>
+            <div class="progress-bar-bg">
+                <div class="progress-bar-fill" id="progress-fill"></div>
+            </div>
+        </div>
+
+        <div class="dashboard grid">
+            <div class="stat-card glass-panel"><span class="stat-num" id="stat-total">0</span><br>Total Scanned</div>
+            <div class="stat-card glass-panel"><span class="stat-num" id="stat-docs">0</span><br>Documents</div>
+            <div class="stat-card glass-panel"><span class="stat-num" id="stat-img">0</span><br>Images</div>
+            <div class="stat-card glass-panel"><span class="stat-num" id="stat-vid">0</span><br>Videos</div>
+            <div class="stat-card glass-panel"><span class="stat-num" id="stat-prog">0</span><br>Programs</div>
+        </div>
+
+        <section class="preview-section glass-panel">
+            <h3>File Preview</h3>
+            <div class="table-container">
+                <table id="preview-table">
+                    <thead>
+                        <tr>
+                            <th>File Name</th>
+                            <th>Type</th>
+                            <th>Category</th>
+                            <th>Size</th>
+                        </tr>
+                    </thead>
+                    <tbody id="preview-body">
+                        <!-- Rows populated by JS -->
+                    </tbody>
+                </table>
+            </div>
+        </section>
+    </div>
+
+    <script src="/static/script.js"></script>
+</body>
+</html>
